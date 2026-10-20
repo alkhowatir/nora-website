@@ -1,0 +1,48 @@
+# Hostinger (LiteSpeed/Apache) — sample configuration. Review before go-live.
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Redirect old /ar/ routes to root Arabic routes (since Arabic is now default at /)
+RewriteRule ^ar/?$ / [R=301,L]
+RewriteRule ^ar/about/?$ /about/ [R=301,L]
+RewriteRule ^ar/services/?$ /services/ [R=301,L]
+RewriteRule ^ar/services/([^/]+)/?$ /services/$1/ [R=301,L]
+RewriteRule ^ar/projects/?$ /projects/ [R=301,L]
+RewriteRule ^ar/careers/?$ /careers/ [R=301,L]
+RewriteRule ^ar/contact/?$ /contact/ [R=301,L]
+RewriteRule ^ar/(.*)$ /$1 [R=301,L]
+
+# Legacy WordPress URLs -> new clean URLs
+RewriteRule ^about-us/?$ /en/about/ [R=301,L]
+RewriteRule ^contact-us/?$ /en/contact/ [R=301,L]
+RewriteRule ^ar/من-نحن.?/?$ /about/ [R=301,L]
+RewriteRule ^ar/خدماتنا/?$ /services/ [R=301,L]
+RewriteRule ^ar/مشاريع/?$ /projects/ [R=301,L]
+RewriteRule ^ar/انضم-إلينا/?$ /careers/ [R=301,L]
+RewriteRule ^ar/اتصل-بنا/?$ /contact/ [R=301,L]
+RewriteRule ^ar/الصفحة-الرئيسية/?$ / [R=301,L]
+</IfModule>
+
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json application/ld+json image/svg+xml
+</IfModule>
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/webp "access plus 1 year"
+ExpiresByType image/png "access plus 1 year"
+ExpiresByType image/jpeg "access plus 1 year"
+ExpiresByType font/woff2 "access plus 1 year"
+ExpiresByType video/mp4 "access plus 1 year"
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 month"
+ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+<IfModule mod_headers.c>
+Header set X-Content-Type-Options "nosniff"
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
