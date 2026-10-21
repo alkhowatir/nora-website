@@ -14,3 +14,10 @@ venv/
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Local development & source tools (kept locally, not published to root web repo)
+build.py
+docs/
+tools/
+nora-redesign/
+site/

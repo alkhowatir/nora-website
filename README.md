@@ -26,43 +26,34 @@ Official bilingual website for **Nora AlSaud Architects & Engineers** (Khobar, S
 
 ```
 .
-├── build.py               # Static site generator (all bilingual copy, templates, and schema)
-├── site/                  # Production-ready static site bundle
-│   ├── index.html         # Arabic homepage (default root)
-│   ├── en/                # English pages (/en/, /en/about/, /en/services/, etc.)
-│   ├── about/             # Arabic About page
-│   ├── services/          # Arabic Services hub and 6 discipline detail pages
-│   ├── projects/          # Arabic Projects portfolio
-│   ├── careers/           # Arabic Careers application page
-│   ├── contact/           # Arabic Contact page
-│   ├── assets/
-│   │   ├── css/main.css   # Single unified design system stylesheet
-│   │   ├── js/main.js     # Vanilla progressive enhancement scripts
-│   │   ├── fonts/         # Self-hosted WOFF2 fonts
-│   │   ├── img/           # Responsive optimized WebP assets
-│   │   └── video/         # Office walkthrough media
-│   ├── sitemap.xml        # XML Sitemap with hreflang alternates
-│   ├── robots.txt         # Crawler indexing rules
-│   ├── llms.txt           # Machine-readable knowledge file for LLMs
-│   └── .htaccess          # Security headers, gzip/brotli caching, and clean URLs
-├── docs/
-│   ├── AUDIT.md           # Architecture and original asset audit
-│   └── BACKEND.md         # Production form endpoint and hosting notes
-├── tools/
-│   ├── manifest.json      # Image dimension and metadata registry
-│   └── process_assets.py  # WebP optimization and favicon derivation pipeline
-└── README.md              # Project documentation
+├── index.html         # Arabic homepage (default root)
+├── en/                # English pages (/en/, /en/about/, /en/services/, etc.)
+├── about/             # Arabic About page
+├── services/          # Arabic Services hub and 6 discipline detail pages
+├── projects/          # Arabic Projects portfolio
+├── careers/           # Arabic Careers application page
+├── contact/           # Arabic Contact page
+├── assets/
+│   ├── css/main.css   # Single unified design system stylesheet
+│   ├── js/main.js     # Vanilla progressive enhancement scripts
+│   ├── fonts/         # Self-hosted WOFF2 fonts
+│   ├── img/           # Responsive optimized WebP assets
+│   └── video/         # Office walkthrough media
+├── sitemap.xml        # XML Sitemap with hreflang alternates
+├── robots.txt         # Crawler indexing rules
+├── llms.txt           # Machine-readable knowledge file for LLMs
+├── .htaccess          # Security headers, gzip/brotli caching, and clean URLs
+└── README.md          # Project documentation
 ```
 
 ---
 
 ## Local Development & Preview
 
-### 1. Preview the Static Site
-Serve the `site/` folder directly using Python's built-in HTTP server:
+### Preview the Static Site
+Serve the repository root directly using Python's built-in HTTP server:
 
 ```bash
-cd site
 python -m http.server 8000
 ```
 
@@ -70,15 +61,8 @@ Then visit:
 - Arabic: `http://localhost:8000/`
 - English: `http://localhost:8000/en/`
 
-### 2. Rebuild the Site
-To regenerate all 25 HTML pages, sitemap, and LLM guides after editing copy or templates in `build.py`:
-
-```bash
-python build.py
-```
-
 ---
 
-## Production Deployment (Hostinger / Apache / Nginx)
+## Production Deployment (Hostinger / Apache / Nginx / GitHub Pages)
 
-The contents of the `site/` directory are completely self-contained and pre-compiled. Deploy by uploading the contents of `site/` directly into your web root (e.g., `public_html/` on Hostinger).
+The repository root is production-ready and can be deployed directly into your web root (e.g., `public_html/` on Hostinger or via Git deployment).
